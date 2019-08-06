@@ -36,6 +36,7 @@ public class AnswerController {
 	private AnswerDAO answerDAO;
 
 	@PostMapping("/add-answer")
+	@CrossOrigin
 	public Answer addAnswer(@Valid @RequestBody Answer answer) {
 		if (answer.getQuestion() == null) {
 			LOGGER.error("Cannot create an answer without a question");

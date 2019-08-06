@@ -37,6 +37,7 @@ public class QuestionController {
 	private QuestionDAO questionDAO;
 
 	@PostMapping("/add-question")
+	@CrossOrigin
 	public Question createQuestion(@Valid @RequestBody Question question) {
 		if (question.getSubject() == null) {
 			LOGGER.error("Cannot create question without a subject");
@@ -62,6 +63,7 @@ public class QuestionController {
 	}
 
 	@GetMapping("/question/{questionId}")
+	@CrossOrigin
 	public ResponseEntity<Question> findQuestionByQuestionId(
 			@Valid @PathVariable(value = "questionId") Long questionId) {
 		Question question = questionDAO.getQuestionById(questionId);

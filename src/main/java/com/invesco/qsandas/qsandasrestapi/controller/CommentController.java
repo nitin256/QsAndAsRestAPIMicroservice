@@ -42,6 +42,7 @@ public class CommentController {
 	private CommentDAO commentDAO;
 
 	@PostMapping("/add-comment")
+	@CrossOrigin
 	public Comment addComment(@Valid @RequestBody Comment comment) {
 
 		if ((comment.getQuestion() == null) && (comment.getAnswer() == null)) {
@@ -87,6 +88,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/comment/{commentId}")
+	@CrossOrigin
 	public ResponseEntity<Comment> getComment(@Valid @PathVariable(value = "commentId") Long commentId) {
 		Comment comment = commentDAO.getCommentById(commentId);
 
@@ -99,6 +101,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/list-comments/question/{questionId}")
+	@CrossOrigin
 	public List<Comment> getAllCommentsForQuestionId(@Valid @PathVariable(value = "questionId") Long questionId) {
 		Question question = questionDAO.getQuestionById(questionId);
 
@@ -112,6 +115,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/list-comments/answer/{answerId}")
+	@CrossOrigin
 	public List<Comment> getAllCommentsForAnswerId(@Valid @PathVariable(value = "answerId") Long answerId) {
 		Answer answer = answerDAO.findAnswerById(answerId);
 

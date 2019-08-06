@@ -30,6 +30,7 @@ public class SubjectController {
 	private SubjectDAO subjectDAO;
 
 	@PostMapping("/add-subject")
+	@CrossOrigin
 	public Subject addSubject(@Valid @RequestBody Subject subject) {
 		return subjectDAO.addSubject(subject);
 	}
@@ -41,6 +42,7 @@ public class SubjectController {
 	}
 
 	@GetMapping("/subject/{name}")
+	@CrossOrigin
 	public ResponseEntity<Subject> findByName(@PathVariable(value = "name") String name) {
 
 		Subject subject = subjectDAO.findBySubjectName(name);
